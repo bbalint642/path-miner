@@ -109,7 +109,10 @@ export default function LearnMorePage() {
               <a href="#pricing" className="text-github-fg-muted hover:text-github-fg transition-colors" style={{display: "none"}}>
                 Pricing
               </a>
-              <Button className="bg-accent-emphasis hover:bg-accent-emphasis/90 text-white shadow-lg shadow-accent-emphasis/20">
+              <Button
+                className="bg-accent-emphasis hover:bg-accent-emphasis/90 text-white shadow-lg shadow-accent-emphasis/20"
+                disabled
+              >
                 Download Now
               </Button>
             </div>

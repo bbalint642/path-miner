@@ -36,7 +36,11 @@ export default function Home() {
               <a href="#pricing" className="text-github-fg-muted hover:text-github-fg transition-colors" style={{display: "none"}}>
                 Pricing
               </a>
-              <Button id="download-now-btn"  className="bg-accent-emphasis hover:bg-accent-emphasis/90 text-white shadow-lg shadow-accent-emphasis/20">
+              <Button
+                id="download-now-btn"
+                className="bg-accent-emphasis hover:bg-accent-emphasis/90 text-white shadow-lg shadow-accent-emphasis/20"
+                disabled
+              >
                 Download Now
               </Button>
             </div>
