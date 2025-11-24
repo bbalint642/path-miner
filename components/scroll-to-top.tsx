@@ -31,6 +31,7 @@ export default function ScrollToTop() {
   return (
     <button
       onClick={scrollToTop}
+      id="scroll-to-top-btn"
       className={`
         fixed bottom-8 right-8 z-50 cursor-pointer
         w-12 h-12 rounded-xl

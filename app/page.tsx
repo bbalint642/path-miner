@@ -24,10 +24,10 @@ export default function Home() {
                   className="w-26 h-26"
                 />
               </div>
-              <span className="text-xl font-bold text-github-fg">PathMiner</span>
+              <span id="logo-text" className="text-xl font-bold text-github-fg">PathMiner</span>
             </Link>
             <div className="hidden md:flex items-center gap-8">
-              <a href="#features" className="text-github-fg-muted hover:text-github-fg transition-colors">
+              <a id="features-link"  href="#features" className="text-github-fg-muted hover:text-github-fg transition-colors">
                 Features
               </a>
               <a href="#benefits" className="text-github-fg-muted hover:text-github-fg transition-colors" style={{display: "none"}}>
@@ -36,7 +36,7 @@ export default function Home() {
               <a href="#pricing" className="text-github-fg-muted hover:text-github-fg transition-colors" style={{display: "none"}}>
                 Pricing
               </a>
-              <Button className="bg-accent-emphasis hover:bg-accent-emphasis/90 text-white shadow-lg shadow-accent-emphasis/20">
+              <Button id="download-now-btn"  className="bg-accent-emphasis hover:bg-accent-emphasis/90 text-white shadow-lg shadow-accent-emphasis/20">
                 Download Now
               </Button>
             </div>
@@ -52,14 +52,14 @@ export default function Home() {
             <span className="text-sm text-accent-emphasis font-medium">AI-Powered DOM Testing Tool</span>
           </div>
 
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 text-balance">
-            <span className="text-github-fg">The Ultimate </span>
+          <h1 id="hero-title" className="text-5xl md:text-7xl font-bold mb-6 text-balance">
+            <span className="text-github-fg">All in one </span>
             <span className="bg-gradient-to-r from-accent-emphasis via-purple-400 to-accent-emphasis bg-clip-text text-transparent">
-              DOM Element Finder
+              DOM Exploration and Automation tool
             </span>
           </h1>
 
-          <p className="text-xl md:text-2xl text-github-fg-muted mb-12 text-balance max-w-3xl mx-auto leading-relaxed">
+          <p id="hero-description" className="text-xl md:text-2xl text-github-fg-muted mb-12 text-balance max-w-3xl mx-auto leading-relaxed">
             {
               "Discover DOM elements instantly and generate Playwright automation code in TypeScript. Built-in AI with local LLM ensures your data never leaves your machine."
             }
@@ -67,6 +67,7 @@ export default function Home() {
 
           <div className="group/cta flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
             <Button
+              id="start-mining-btn"
               size="lg"
               className="cursor-pointer bg-accent-emphasis border-2 border-accent-emphasis group-hover/cta:bg-github-canvas/30 group-hover/cta:border-accent-emphasis text-white shadow-2xl shadow-accent-emphasis/20 text-lg px-8 py-6 h-auto transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]"
             >
@@ -74,6 +75,7 @@ export default function Home() {
               Start Mining Elements
             </Button>
             <Button
+              id="find-out-more-btn"
               asChild
               size="lg"
               variant="outline"
@@ -109,7 +111,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4 text-github-fg">Powerful Features</h2>
-            <p className="text-xl text-github-fg-muted">Everything you need for efficient DOM testing and automation</p>
+            <p className="text-xl text-github-fg-muted">Everything you need to explore, understand, and automate complex DOM structures with confidence.</p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -120,10 +122,10 @@ export default function Home() {
                 <div className="w-12 h-12 rounded-lg bg-accent-emphasis/10 flex items-center justify-center mb-4">
                   <Target className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-xl font-bold mb-2 text-github-fg">Smart Element Detection</h3>
+                <h3 className="text-xl font-bold mb-2 text-github-fg">Blazing Fast DOM Element Discovery</h3>
                 <p className="text-github-fg-muted leading-relaxed">
                   {
-                    "Instantly find any DOM element with our intelligent selector engine. Click, hover, or search - PathMiner finds it all."
+                    "Instantly locate any element on the page with PathMiner’s interactive DOM explorer."
                   }
                 </p>
               </div>
@@ -135,10 +137,10 @@ export default function Home() {
                 <div className="w-12 h-12 rounded-lg bg-accent-emphasis/10 flex items-center justify-center mb-4">
                   <Code2 className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-xl font-bold mb-2 text-github-fg">TypeScript Code Generation</h3>
+                <h3 className="text-xl font-bold mb-2 text-github-fg">Production-Ready Code Generation</h3>
                 <p className="text-github-fg-muted leading-relaxed">
                   {
-                    "Generate production-ready Playwright automation code in TypeScript. Copy and paste directly into your test suite."
+                    "Generate clean, idiomatic code with a single click. Copy the snippets with ease to your Playwright or Python test suite."
                   }
                 </p>
               </div>
@@ -150,10 +152,10 @@ export default function Home() {
                 <div className="w-12 h-12 rounded-lg bg-accent-emphasis/10 flex items-center justify-center mb-4">
                   <Brain className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-xl font-bold mb-2 text-github-fg">Built-in AI Assistant</h3>
+                <h3 className="text-xl font-bold mb-2 text-github-fg">Context-Aware Built-in AI Assistant</h3>
                 <p className="text-github-fg-muted leading-relaxed">
                   {
-                    "Ask questions, get suggestions, and optimize your selectors with our intelligent AI assistant powered by local LLM."
+                    "Ask questions, get suggestions, and optimize your selectors with our intelligent built-in AI assistant."
                   }
                 </p>
               </div>
@@ -168,7 +170,7 @@ export default function Home() {
                 <h3 className="text-xl font-bold mb-2 text-github-fg">Maximum Data Safety</h3>
                 <p className="text-github-fg-muted leading-relaxed">
                   {
-                    "Your data never leaves your machine. Our locally stored LLM ensures complete privacy and security for your testing workflows."
+                    "PathMiner runs entirely on your machine – your pages, tests, and prompts never leave your local environment."
                   }
                 </p>
               </div>
@@ -217,19 +219,22 @@ export default function Home() {
                 {"Interested in trying PathMiner for yourself?"}
               </h2>
               <p className="text-xl text-github-fg-muted mb-8 text-balance">
-                {"Download our free demo and see how PathMiner accelerates your DOM testing and automation workflow in minutes."}
+                {"PathMiner's first alpha release will be available in December 2025."}
               </p>
               <div className="group/cta flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Button
+                  id="check-out-docs-btn"
                   size="lg"
                   className="cursor-pointer bg-accent-emphasis border-2 border-accent-emphasis group-hover/cta:bg-github-canvas/30 group-hover/cta:border-accent-emphasis text-white shadow-xl shadow-accent-emphasis/20 text-lg px-8 py-6 h-auto transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]"
                 >
-                  Download the free demo
+                  Check out out docs 
                 </Button>
                 <Button
                   size="lg"
                   variant="outline"
                   className="cursor-pointer border-github-border border-2 hover:bg-accent-emphasis text-github-fg hover:text-white text-lg px-8 py-6 h-auto backdrop-blur-sm bg-github-canvas/30 transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]"
+                  style={{display: "none"}}
+                
                 >
                   View documentation
                 </Button>
@@ -252,32 +257,32 @@ export default function Home() {
                     className="w-6 h-6"
                   />
                 </div>
-                <span className="text-lg font-bold text-github-fg">PathMiner</span>
+                <span id="footer-logo-text" className="text-lg font-bold text-github-fg">PathMiner</span>
               </div>
-              <p className="text-github-fg-muted text-sm">
-                {"The ultimate DOM testing and automation tool for modern developers."}
+              <p id="footer-description" className="text-github-fg-muted text-sm">
+                {"PathMiner is your all‑in‑one workspace. Fast, reliable, and developer-friendly."}
               </p>
             </div>
             <div>
               <h4 className="font-semibold text-github-fg mb-4">Product</h4>
               <ul className="space-y-2 text-sm text-github-fg-muted">
                 <li>
-                  <a href="#" className="hover:text-accent-emphasis transition-colors">
+                  <a id="features-link-footer" href="#" className="hover:text-accent-emphasis transition-colors">
                     Features
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-accent-emphasis transition-colors" style={{display: "none"}}>
+                  <a id="pricing-link-footer" href="#" className="hover:text-accent-emphasis transition-colors" style={{display: "none"}}>
                     Pricing
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-accent-emphasis transition-colors">
+                  <a id="documentation-link-footer" href="#" className="hover:text-accent-emphasis transition-colors">
                     Documentation
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-accent-emphasis transition-colors">
+                  <a id="changelog-link-footer" href="#" className="hover:text-accent-emphasis transition-colors">
                     Changelog
                   </a>
                 </li>
@@ -287,22 +292,22 @@ export default function Home() {
               <h4 className="font-semibold text-github-fg mb-4">Company</h4>
               <ul className="space-y-2 text-sm text-github-fg-muted">
                 <li>
-                  <a href="#" className="hover:text-accent-emphasis transition-colors">
+                  <a id="about-link-footer" href="#" className="hover:text-accent-emphasis transition-colors">
                     About
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-accent-emphasis transition-colors">
+                  <a id="blog-link-footer" href="#" className="hover:text-accent-emphasis transition-colors">
                     Blog
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-accent-emphasis transition-colors">
+                  <a id="contact-link-footer" href="#" className="hover:text-accent-emphasis transition-colors">
                     Contact
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-accent-emphasis transition-colors">
+                  <a href="#" className="hover:text-accent-emphasis transition-colors" style={{display: "none"}}>
                     Support
                   </a>
                 </li>
