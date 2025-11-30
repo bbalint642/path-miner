@@ -18,16 +18,64 @@ import type { CarouselApi } from "@/components/ui/carousel"
 
 const screenshots = [
   {
-    src: "/pathminer-demo-pic.png",
-    alt: "PathMiner demo screenshot",
+    src: "/demo-pics/1-PM-Login.png",
+    alt: "PathMiner login screen",
   },
   {
-    src: "/demo-pics/tsx-code.png",
-    alt: "TSX code example",
+    src: "/demo-pics/2-PM-create-project-1.png",
+    alt: "Create new project screen - step 1",
   },
   {
-    src: "/demo-pics/python-code.png",
-    alt: "Python code example",
+    src: "/demo-pics/3-PM-create-project-2.png",
+    alt: "Create new project screen - step 2",
+  },
+  {
+    src: "/demo-pics/4-PM-main-1-empty.png",
+    alt: "Main PathMiner UI with empty project",
+  },
+  {
+    src: "/demo-pics/5-PM-main-2-search.png",
+    alt: "Main UI with element search",
+  },
+  {
+    src: "/demo-pics/6-PM-main-3-scan.png",
+    alt: "Main UI with DOM scan results",
+  },
+  {
+    src: "/demo-pics/7-PM-locators.png",
+    alt: "Locators panel",
+  },
+  {
+    src: "/demo-pics/8-PM-actions-and-code.png",
+    alt: "Actions and generated code view",
+  },
+  {
+    src: "/demo-pics/9-PM-AI-1.png",
+    alt: "AI assistance view 1",
+  },
+  {
+    src: "/demo-pics/10-PM-AI-2.png",
+    alt: "AI assistance view 2",
+  },
+  {
+    src: "/demo-pics/11-PM-AI-3.png",
+    alt: "AI assistance view 3",
+  },
+  {
+    src: "/demo-pics/12-PM-browser-DOM-inspector.png",
+    alt: "Browser DOM inspector integration",
+  },
+  {
+    src: "/demo-pics/13-PM-browser-step-recorder.png",
+    alt: "Browser step recorder",
+  },
+  {
+    src: "/demo-pics/14-PM-browser-step-recorder-ai.png",
+    alt: "Browser step recorder with AI explanation",
+  },
+  {
+    src: "/demo-pics/15-PM-ai-generated-tc.png",
+    alt: "AI generated test case",
   },
 ]
 
