@@ -7,6 +7,7 @@ import ParticleBackground from "@/components/particle-background"
 import ScrollToTop from "@/components/scroll-to-top"
 import Link from "next/link"
 import { FileText, PlayCircle, Image as ImageIcon, BookOpen, X, ArrowLeft, ArrowRight } from "lucide-react"
+import SiteNavbar from "@/components/site-navbar"
 import {
   Carousel,
   CarouselContent,
@@ -134,39 +135,7 @@ export default function LearnMorePage() {
       <ScrollToTop />
 
       {/* Navigation */}
-      <nav className="relative z-10 border-b border-github-border/50 backdrop-blur-sm bg-github-canvas/30">
-        <div className="container mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-gradient-to-br from-accent-emphasis to-accent-emphasis/70 shadow-lg shadow-accent-emphasis/20">
-                <img
-                  src="/pathminer-custom-logo.svg"
-                  alt="PathMiner logo"
-                  className="w-26 h-26"
-                />
-              </div>
-              <span className="text-xl font-bold text-github-fg">PathMiner</span>
-            </Link>
-            <div className="hidden md:flex items-center gap-8">
-              <a href="#features" className="text-github-fg-muted hover:text-github-fg transition-colors">
-                Features
-              </a>
-              <a href="#benefits" className="text-github-fg-muted hover:text-github-fg transition-colors" style={{display: "none"}}>
-                Benefits
-              </a>
-              <a href="#pricing" className="text-github-fg-muted hover:text-github-fg transition-colors" style={{display: "none"}}>
-                Pricing
-              </a>
-              <Button
-                className="bg-accent-emphasis hover:bg-accent-emphasis/90 text-white shadow-lg shadow-accent-emphasis/20"
-                disabled
-              >
-                Download Now
-              </Button>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <SiteNavbar featuresHref="/#features" />
 
       {/* Hero / Intro */}
       <section className="relative z-10 container mx-auto px-6 pt-16 pb-10 max-w-5xl">
@@ -402,6 +371,68 @@ export default function LearnMorePage() {
           </div>
         </div>
       )}
+
+      {/* Footer */}
+      <footer className="relative z-10 border-t border-github-border/50 backdrop-blur-sm bg-github-canvas/30 mt-24">
+        <div className="container mx-auto px-6 py-12">
+          <div className="grid md:grid-cols-4 gap-8">
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-accent-emphasis to-accent-emphasis/70">
+                  <img src="/pathminer-custom-logo.svg" alt="PathMiner logo" className="w-6 h-6" />
+                </div>
+                <span className="text-lg font-bold text-github-fg">PathMiner</span>
+              </div>
+              <p className="text-github-fg-muted text-sm">
+                {"PathMiner is your all‑in‑one workspace. Fast, reliable, and developer-friendly."}
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-github-fg mb-4">Product</h4>
+              <ul className="space-y-2 text-sm text-github-fg-muted">
+                <li>
+                  <Link href="/playground" className="hover:text-accent-emphasis transition-colors">
+                    Playground
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold text-github-fg mb-4">Company</h4>
+              <ul className="space-y-2 text-sm text-github-fg-muted">
+                <li>
+                  <a href="#" className="hover:text-accent-emphasis transition-colors">
+                    About
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-accent-emphasis transition-colors">
+                    Contact
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold text-github-fg mb-4">Legal</h4>
+              <ul className="space-y-2 text-sm text-github-fg-muted">
+                <li>
+                  <a href="#" className="hover:text-accent-emphasis transition-colors">
+                    Privacy
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-accent-emphasis transition-colors">
+                    Terms
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="border-t border-github-border/50 mt-12 pt-8 text-center text-sm text-github-fg-muted">
+            <p>{"© 2025 PathMiner. All rights reserved."}</p>
+          </div>
+        </div>
+      </footer>
     </div>
   )
 }

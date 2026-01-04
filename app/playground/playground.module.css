@@ -1,0 +1,217 @@
+.page {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background: var(--github-canvas-default);
+  color: var(--github-fg-default);
+}
+
+.hero {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 64px 24px 40px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  border: 1px solid color-mix(in srgb, var(--accent-emphasis) 30%, transparent);
+  background: color-mix(in srgb, var(--accent-emphasis) 6%, transparent);
+  backdrop-filter: blur(8px);
+  margin-bottom: 24px;
+}
+
+.badgeIcon {
+  width: 16px;
+  height: 16px;
+  color: var(--accent-emphasis);
+}
+
+.badgeText {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent-emphasis);
+}
+
+.title {
+  margin: 0 0 16px;
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--github-fg-default);
+  text-wrap: balance;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 48px;
+  }
+}
+
+.titleAccent {
+  background: linear-gradient(90deg, var(--accent-emphasis), #a855f7, var(--accent-emphasis));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.subtitle {
+  margin: 0 0 32px;
+  max-width: 768px;
+  font-size: 22px;
+  line-height: 1.65;
+  color: var(--github-fg-muted);
+}
+
+@media (min-width: 768px) {
+  .subtitle {
+    font-size: 20px;
+  }
+}
+
+.lower {
+  position: relative;
+  z-index: 5;
+  background: #161b22;
+}
+
+.sectionTitle {
+  margin: 0 0 16px;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--github-fg-default);
+}
+
+@media (min-width: 768px) {
+  .sectionTitle {
+    font-size: 20px;
+  }
+}
+
+.placeholderSection {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px 96px;
+}
+
+.simpleFormsGrid {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  justify-items: center;
+}
+
+@media (min-width: 1024px) {
+  .simpleFormsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 32px;
+  }
+}
+
+.footer {
+  position: relative;
+  z-index: 10;
+  margin-top: 96px;
+  border-top: 1px solid color-mix(in srgb, var(--github-border-default) 50%, transparent);
+  background: transparent;
+}
+
+.footerInner {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 48px 24px;
+}
+
+.footerGrid {
+  display: grid;
+  gap: 32px;
+}
+
+@media (min-width: 768px) {
+  .footerGrid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.footerBrandRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.footerBrandMark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--accent-emphasis), color-mix(in srgb, var(--accent-emphasis) 70%, transparent));
+}
+
+.footerBrandLogo {
+  width: 24px;
+  height: 24px;
+}
+
+.footerBrandText {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--github-fg-default);
+}
+
+.footerDesc {
+  margin: 0;
+  font-size: 14px;
+  color: var(--github-fg-muted);
+}
+
+.footerHeading {
+  margin: 0 0 16px;
+  font-weight: 600;
+  color: var(--github-fg-default);
+}
+
+.footerList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--github-fg-muted);
+}
+
+.footerLink {
+  color: inherit;
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+
+.footerLink:hover {
+  color: var(--accent-emphasis);
+}
+
+.footerBottom {
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid color-mix(in srgb, var(--github-border-default) 50%, transparent);
+  text-align: center;
+  font-size: 14px;
+  color: var(--github-fg-muted);
+}
+
+
+

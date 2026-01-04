@@ -1,0 +1,237 @@
+.card {
+  --ring: #6d00d4;
+  position: relative;
+  background: color-mix(in srgb, var(--github-canvas-default) 70%, transparent);
+  border: 1px solid color-mix(in srgb, var(--github-border-default) 85%, transparent);
+  box-shadow:
+    0 16px 50px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+  backdrop-filter: blur(10px);
+}
+
+.card :global([data-slot="card-header"]) {
+  border-bottom: 1px solid color-mix(in srgb, var(--github-border-muted) 75%, transparent);
+}
+
+.card :global([data-slot="card-footer"]) {
+  border-top: 1px solid color-mix(in srgb, var(--github-border-muted) 75%, transparent);
+}
+
+.card :global([data-slot="input"]) {
+  background: color-mix(in srgb, var(--github-canvas-inset) 65%, transparent);
+  border-color: color-mix(in srgb, var(--github-border-default) 85%, transparent);
+}
+
+.card :global([data-slot="checkbox"][data-state="checked"]) {
+  background: #10002e;
+  border-color: #6d00d4;
+  color: #ffffff;
+}
+
+.cardSuccess::after,
+.cardError::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.02) inset,
+    0 0 0 1px rgba(255, 255, 255, 0.02);
+  opacity: 0;
+  animation:
+    feedback-enter 200ms cubic-bezier(0.2, 0.9, 0.2, 1) both,
+    feedback-exit 300ms cubic-bezier(0.4, 0, 0.2, 1) both 2200ms;
+}
+
+.cardSuccess::after {
+  box-shadow:
+    0 0 0 1px rgba(63, 185, 80, 0.55) inset,
+    0 0 0 1px rgba(63, 185, 80, 0.25);
+}
+
+.cardError::after {
+  box-shadow:
+    0 0 0 1px rgba(248, 81, 73, 0.55) inset,
+    0 0 0 1px rgba(248, 81, 73, 0.25);
+}
+
+@keyframes feedback-enter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes feedback-exit {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.fieldErrorSlot {
+  min-height: 10px;
+  margin: 0;
+  font-size: 13px;
+  line-height: 18px;
+  color: #f85149;
+  opacity: 0;
+  transform: translateY(-2px);
+  filter: blur(1px);
+  transition:
+    opacity 200ms cubic-bezier(0.2, 0.9, 0.2, 1),
+    transform 200ms cubic-bezier(0.2, 0.9, 0.2, 1),
+    filter 200ms cubic-bezier(0.2, 0.9, 0.2, 1);
+}
+
+.fieldErrorVisible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+.headerRow {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+}
+
+.headerTitle {
+  justify-self: start;
+}
+
+.headerSpacer {
+  justify-self: end;
+}
+
+.statusSlot {
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.statusPill {
+  margin: 0;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 700;
+  border: 1px solid transparent;
+  background: rgba(0, 0, 0, 0.25);
+  animation:
+    status-enter 200ms cubic-bezier(0.2, 0.9, 0.2, 1) both,
+    status-exit 300ms cubic-bezier(0.4, 0, 0.2, 1) both 2200ms;
+}
+
+.statusPillSuccess {
+  color: #3fb950;
+  border-color: rgba(63, 185, 80, 0.35);
+}
+
+.statusPillError {
+  color: #f85149;
+  border-color: rgba(248, 81, 73, 0.35);
+}
+
+@keyframes status-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes status-exit {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .statusPill {
+    animation: none;
+  }
+  .cardSuccess::after,
+  .cardError::after {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+.footer {
+  width: 100%;
+  display: grid;
+  gap: 10px;
+}
+
+.dummyCreds {
+  display: grid;
+  gap: 6px;
+  margin-left: 30%;
+  margin-top: 1rem;
+}
+
+.footerTitle {
+  margin: 0;
+  font-size: 13px;
+  color: var(--github-fg-muted);
+}
+
+.credsList {
+  margin: 0;
+  display: grid;
+  gap: 4px;
+  font-size: 13px;
+  color: var(--github-fg-default);
+}
+
+.credsRow {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 10px;
+  align-items: baseline;
+}
+
+.credsRow dt {
+  color: var(--github-fg-muted);
+  font-weight: 600;
+}
+
+.credsRow dd {
+  margin: 0;
+  font-size: 14px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  color: #ffffff;
+}
+
+.signInButton {
+  background: #10002e;
+  border: 1px solid #6d00d4;
+  color: #ffffff;
+}
+
+.signInButton:hover {
+  background: color-mix(in srgb, #10002e 82%, #6d00d4);
+}
+
+.signInButton:focus-visible {
+  box-shadow: 0 0 0 3px color-mix(in srgb, #6d00d4 35%, transparent);
+}
+
+

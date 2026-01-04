@@ -1,0 +1,50 @@
+.card {
+  --ring: #6d00d4;
+  background: color-mix(in srgb, var(--github-canvas-default) 70%, transparent);
+  border: 1px solid color-mix(in srgb, var(--github-border-default) 85%, transparent);
+  box-shadow:
+    0 16px 50px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+  backdrop-filter: blur(10px);
+}
+
+.card :global([data-slot="card-header"]) {
+  border-bottom: 1px solid color-mix(in srgb, var(--github-border-muted) 75%, transparent);
+}
+
+.card :global([data-slot="card-footer"]) {
+  border-top: 1px solid color-mix(in srgb, var(--github-border-muted) 75%, transparent);
+}
+
+.card :global([data-slot="input"]),
+.card :global([data-slot="textarea"]) {
+  background: color-mix(in srgb, var(--github-canvas-inset) 65%, transparent);
+  border-color: color-mix(in srgb, var(--github-border-default) 85%, transparent);
+}
+
+.submitButton {
+  background: #10002e;
+  border: 1px solid #6d00d4;
+  color: #ffffff;
+}
+
+.submitButton:hover {
+  background: color-mix(in srgb, #10002e 82%, #6d00d4);
+}
+
+.submitButton:focus-visible {
+  box-shadow: 0 0 0 3px color-mix(in srgb, #6d00d4 35%, transparent);
+}
+
+.outputBlock {
+  width: 100%;
+  display: grid;
+  gap: 8px;
+}
+
+.outputLabel {
+  font-size: 12px;
+  color: var(--github-fg-muted);
+}
+
+
