@@ -118,6 +118,20 @@
   }
 }
 
+.simpleFormsSubSection {
+  margin-top: 32px;
+  display: grid;
+  gap: 16px;
+  justify-items: center;
+}
+
+.subSectionTitle {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--github-fg-default);
+}
+
 .footer {
   position: relative;
   z-index: 10;

@@ -1,0 +1,141 @@
+.card {
+  --ring: #6d00d4;
+  background: color-mix(in srgb, var(--github-canvas-default) 70%, transparent);
+  border: 1px solid color-mix(in srgb, var(--github-border-default) 85%, transparent);
+  box-shadow:
+    0 16px 50px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+  backdrop-filter: blur(10px);
+}
+
+.card :global([data-slot="card-header"]) {
+  border-bottom: 1px solid color-mix(in srgb, var(--github-border-muted) 75%, transparent);
+}
+
+.card :global([data-slot="card-footer"]) {
+  border-top: 1px solid color-mix(in srgb, var(--github-border-muted) 75%, transparent);
+}
+
+.card :global([data-slot="input"]),
+.card :global([data-slot="select-trigger"]) {
+  background: color-mix(in srgb, var(--github-canvas-inset) 65%, transparent);
+  border-color: color-mix(in srgb, var(--github-border-default) 85%, transparent);
+}
+
+.card :global([data-slot="checkbox"][data-state="checked"]) {
+  background: #10002e;
+  border-color: #6d00d4;
+  color: #ffffff;
+}
+
+.content {
+  display: grid;
+  gap: 14px;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 14px;
+  align-items: end;
+}
+
+.control {
+  flex: 1 1 220px;
+  min-width: 220px;
+  display: grid;
+  gap: 6px;
+}
+
+.controlRight {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: end;
+}
+
+.selectTrigger {
+  width: 100%;
+  justify-content: space-between;
+}
+
+.resetButton {
+  border-color: color-mix(in srgb, var(--github-border-default) 85%, transparent);
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.resetButton:hover {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.columnsBlock {
+  display: grid;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid color-mix(in srgb, var(--github-border-default) 75%, transparent);
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.columnsTitle {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--github-fg-muted);
+  text-transform: uppercase;
+}
+
+.columnsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+}
+
+.columnToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.columnToggleLabel {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--github-fg-default);
+}
+
+.tableShell {
+  border: 1px solid color-mix(in srgb, var(--github-border-default) 80%, transparent);
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.tableShell :global([data-slot="table-head"]) {
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.tableShell :global([data-slot="table-row"]) {
+  border-color: color-mix(in srgb, var(--github-border-muted) 70%, transparent);
+}
+
+.emptyCell {
+  padding: 0;
+}
+
+.empty {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.footer {
+  justify-content: flex-end;
+}
+
+.footerText {
+  margin: 0;
+  font-size: 13px;
+  color: var(--github-fg-muted);
+}
+
+

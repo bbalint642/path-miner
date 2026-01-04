@@ -7,6 +7,7 @@ import ParticleBackground from "@/components/particle-background"
 import ScrollToTop from "@/components/scroll-to-top"
 import SiteNavbar from "@/components/site-navbar"
 import EchoForm from "@/components/playground/echo-form"
+import DummyUsersTable from "@/components/playground/dummy-users-table"
 import SimpleLoginForm from "@/components/playground/simple-login-form"
 
 import styles from "./playground.module.css"
@@ -45,6 +46,11 @@ export default function PlaygroundPage() {
           <div className={styles.simpleFormsGrid}>
             <SimpleLoginForm />
             <EchoForm />
+          </div>
+
+          <div className={styles.simpleFormsSubSection}>
+            <h3 className={styles.subSectionTitle}>Table (dummy data)</h3>
+            <DummyUsersTable />
           </div>
         </section>
 
