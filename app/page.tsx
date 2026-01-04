@@ -41,7 +41,7 @@ export default function Home() {
             <Button
               id="start-mining-btn"
               size="lg"
-              className="cursor-pointer bg-accent-emphasis border-2 border-accent-emphasis group-hover/cta:bg-github-canvas/30 group-hover/cta:border-accent-emphasis text-white shadow-2xl shadow-accent-emphasis/20 text-lg px-8 py-6 h-auto transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]"
+              className="cursor-pointer bg-accent-emphasis border-2 border-accent-emphasis text-white shadow-2xl shadow-accent-emphasis/20 text-lg px-8 py-6 h-auto transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:bg-accent-emphasis/90 hover:border-accent-emphasis"
             >
               <Zap className="w-5 h-5 mr-2" />
               Start Mining Elements
