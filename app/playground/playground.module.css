@@ -30,13 +30,13 @@
 .badgeIcon {
   width: 16px;
   height: 16px;
-  color: var(--accent-emphasis);
+  color: #fff;
 }
 
 .badgeText {
   font-size: 14px;
   font-weight: 600;
-  color: var(--accent-emphasis);
+  color: #fff;
 }
 
 .title {
@@ -77,19 +77,23 @@
 .lower {
   position: relative;
   z-index: 5;
-  background: #161b22;
+  /* Keep content readable, but let the particle background show through */
+  /*background: color-mix(in srgb, #161b22 10%, transparent);*/
+  backdrop-filter: blur(6px);
 }
 
 .sectionTitle {
-  margin: 0 0 16px;
-  font-size: 22px;
-  font-weight: 400;
-  color: var(--github-fg-default);
+  margin: 3rem 0;
+  font-size: 30px;
+  font-weight: 300;
+  color: #e6edf34d;
+  text-align: center;
+  text-wrap: balance;
 }
 
 @media (min-width: 768px) {
   .sectionTitle {
-    font-size: 20px;
+    font-size: 48px;
   }
 }
 
@@ -103,7 +107,6 @@
 }
 
 .simpleFormsGrid {
-  margin-top: 24px;
   display: grid;
   grid-template-columns: 1fr;
   gap: 24px;
@@ -119,17 +122,24 @@
 }
 
 .simpleFormsSubSection {
-  margin-top: 32px;
   display: grid;
-  gap: 16px;
+  gap: 0;
   justify-items: center;
 }
 
 .subSectionTitle {
-  margin: 0;
-  font-size: 18px;
-  font-weight: 400;
-  color: var(--github-fg-default);
+  margin: 3rem 0;
+  font-size: 30px;
+  font-weight: 300;
+  color: #e6edf34d;
+  text-align: center;
+  text-wrap: balance;
+}
+
+@media (min-width: 768px) {
+  .subSectionTitle {
+    font-size: 48px;
+  }
 }
 
 .footer {

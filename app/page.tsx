@@ -20,8 +20,8 @@ export default function Home() {
       <section className="relative z-10 container mx-auto px-6 pt-24 pb-32">
         <div className="max-w-5xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-accent-emphasis/30 bg-accent-emphasis/5 backdrop-blur-sm mb-8">
-            <Sparkles className="w-4 h-4 text-accent-emphasis" />
-            <span className="text-sm text-accent-emphasis font-medium">AI-Powered DOM Testing Tool</span>
+            <Sparkles className="w-4 h-4 text-white" />
+            <span className="text-sm text-white font-medium">AI-Powered DOM Testing Tool</span>
           </div>
 
           <h1 id="hero-title" className="text-5xl md:text-7xl font-bold mb-6 text-balance">
