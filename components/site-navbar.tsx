@@ -3,6 +3,7 @@
 import Link from "next/link"
 
 import { Button } from "@/components/ui/button"
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs"
 
 type SiteNavbarProps = {
   /** On the homepage this should be "#features"; on subpages use "/#features". */
@@ -35,13 +36,21 @@ export default function SiteNavbar({ featuresHref = "#features" }: SiteNavbarPro
             <Link href="/playground" className="text-github-fg-muted hover:text-github-fg transition-colors">
               Playground
             </Link>
-            <Button
-              id="download-now-btn"
-              className="bg-accent-emphasis hover:bg-accent-emphasis/90 text-white shadow-lg shadow-accent-emphasis/20"
-              disabled
-            >
-              Download Now
-            </Button>
+            <SignedOut>
+              <div className="flex items-center gap-2">
+                <SignInButton>
+                  <Button
+                    id="sign-in-btn"
+                    className="bg-[#6d00d4] text-white hover:bg-[#6d00d4]/90 shadow-lg shadow-[#6d00d4]/20"
+                  >
+                    Sign in
+                  </Button>
+                </SignInButton>
+              </div>
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
           </div>
         </div>
       </div>

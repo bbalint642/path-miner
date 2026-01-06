@@ -6,6 +6,7 @@ import ParticleBackground from "@/components/particle-background"
 import ScrollToTop from "@/components/scroll-to-top"
 import Link from "next/link"
 import SiteNavbar from "@/components/site-navbar"
+import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs"
 
 export default function Home() {
   return (
@@ -38,14 +39,31 @@ export default function Home() {
           </p>
 
           <div className="group/cta flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-            <Button
-              id="start-mining-btn"
-              size="lg"
-              className="cursor-pointer bg-accent-emphasis border-2 border-accent-emphasis text-white shadow-2xl shadow-accent-emphasis/20 text-lg px-8 py-6 h-auto transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:bg-accent-emphasis/90 hover:border-accent-emphasis"
-            >
-              <Zap className="w-5 h-5 mr-2" />
-              Start Mining Elements
-            </Button>
+            <SignedOut>
+              <SignInButton>
+                <Button
+                  id="start-mining-btn"
+                  size="lg"
+                  className="cursor-pointer bg-accent-emphasis border-2 border-accent-emphasis text-white shadow-2xl shadow-accent-emphasis/20 text-lg px-8 py-6 h-auto transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:bg-accent-emphasis/90 hover:border-accent-emphasis"
+                >
+                  <Zap className="w-5 h-5 mr-2" />
+                  Start Mining Elements
+                </Button>
+              </SignInButton>
+            </SignedOut>
+            <SignedIn>
+              <Button
+                id="start-mining-btn"
+                asChild
+                size="lg"
+                className="cursor-pointer bg-accent-emphasis border-2 border-accent-emphasis text-white shadow-2xl shadow-accent-emphasis/20 text-lg px-8 py-6 h-auto transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:bg-accent-emphasis/90 hover:border-accent-emphasis"
+              >
+                <Link href="/playground">
+                  <Zap className="w-5 h-5 mr-2" />
+                  Start Mining Elements
+                </Link>
+              </Button>
+            </SignedIn>
             <Button
               id="find-out-more-btn"
               asChild
