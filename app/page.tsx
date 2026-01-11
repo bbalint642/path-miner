@@ -1,28 +1,49 @@
 "use client"
 
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
+import { Checkbox } from "@/components/ui/checkbox"
+import { Label } from "@/components/ui/label"
 import { Code2, Sparkles, Shield, Zap, Target, Brain } from "lucide-react"
 import ParticleBackground from "@/components/particle-background"
 import ScrollToTop from "@/components/scroll-to-top"
 import Link from "next/link"
 import SiteNavbar from "@/components/site-navbar"
-import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs"
 
 export default function Home() {
+  const [email, setEmail] = useState("")
+  const [submitted, setSubmitted] = useState(false)
+  const [consentChecked, setConsentChecked] = useState(false)
+  const hasEmail = email.trim().length > 0
+  const canSubmit = hasEmail && consentChecked
+
+  const handleWaitlistSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    if (!email.trim() || !consentChecked) return
+
+    console.log("Waitlist interest (no backend yet):", email)
+    setSubmitted(true)
+    setEmail("")
+  }
+
   return (
     <div className="relative min-h-screen bg-github-canvas text-github-fg overflow-hidden">
-      <ParticleBackground particleColor="#6d00d4" speed="slow" density="medium" />
+      <ParticleBackground particleColor="#888" speed="slow" density="high" />
       <ScrollToTop />
 
       {/* Navigation */}
       <SiteNavbar featuresHref="#features" />
 
-      {/* Hero Section */}
-      <section className="relative z-10 container mx-auto px-6 pt-24 pb-32">
+      {/* Content wrapper - pushed down by navbar height */}
+      <div className="relative z-10 pt-20">
+        {/* Hero Section */}
+        <section className="container mx-auto px-6 pt-24 pb-32">
         <div className="max-w-5xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-accent-emphasis/30 bg-accent-emphasis/5 backdrop-blur-sm mb-8">
-            <Sparkles className="w-4 h-4 text-white" />
-            <span className="text-sm text-white font-medium">AI-Powered DOM Testing Tool</span>
+          <div className="text-left mb-8">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-accent-emphasis/30 bg-accent-emphasis/5 backdrop-blur-sm">
+              <Sparkles className="w-4 h-4 text-white" />
+              <span className="text-sm text-white font-medium">AI-Powered DOM Testing Tool</span>
+            </div>
           </div>
 
           <h1 id="hero-title" className="text-5xl md:text-7xl font-bold mb-6 text-balance">
@@ -39,37 +60,23 @@ export default function Home() {
           </p>
 
           <div className="group/cta flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-            <SignedOut>
-              <SignInButton>
-                <Button
-                  id="start-mining-btn"
-                  size="lg"
-                  className="cursor-pointer bg-accent-emphasis border-2 border-accent-emphasis text-white shadow-2xl shadow-accent-emphasis/20 text-lg px-8 py-6 h-auto transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:bg-accent-emphasis/90 hover:border-accent-emphasis"
-                >
-                  <Zap className="w-5 h-5 mr-2" />
-                  Start Mining Elements
-                </Button>
-              </SignInButton>
-            </SignedOut>
-            <SignedIn>
-              <Button
-                id="start-mining-btn"
-                asChild
-                size="lg"
-                className="cursor-pointer bg-accent-emphasis border-2 border-accent-emphasis text-white shadow-2xl shadow-accent-emphasis/20 text-lg px-8 py-6 h-auto transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:bg-accent-emphasis/90 hover:border-accent-emphasis"
-              >
-                <Link href="/playground">
-                  <Zap className="w-5 h-5 mr-2" />
-                  Start Mining Elements
-                </Link>
-              </Button>
-            </SignedIn>
             <Button
-              id="find-out-more-btn"
+              id="primary-cta-btn"
+              size="lg"
+              onClick={() => {
+                document.getElementById('waitlist-section')?.scrollIntoView({ behavior: 'smooth' })
+              }}
+              className="btn-primary-cta"
+            >
+              
+              Join waitlist
+            </Button>
+            <Button
+              id="secondary-cta-btn"
               asChild
               size="lg"
               variant="outline"
-              className="cursor-pointer border-github-border border-2 hover:bg-accent-emphasis text-github-fg hover:text-white text-lg px-8 py-6 h-auto backdrop-blur-sm bg-github-canvas/30 transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]"
+              className="btn-secondary-cta"
             >
               <Link href="/learn-more">
                 Find out more
@@ -200,35 +207,96 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative z-10 container mx-auto px-6 py-24">
+      <section id="waitlist-section" className="relative z-10 container mx-auto px-6 py-24">
         <div className="max-w-4xl mx-auto">
           <div className="relative group">
             <div className="absolute -inset-1 bg-gradient-to-r from-accent-emphasis via-purple-500 to-accent-emphasis rounded-2xl blur-2xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
-            <div className="relative rounded-2xl border border-github-border/50 bg-github-canvas-overlay/50 backdrop-blur-xl p-12 text-center shadow-2xl">
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-github-fg text-balance">
-                {"Interested in trying PathMiner for yourself?"}
-              </h2>
-              <p className="text-xl text-github-fg-muted mb-8 text-balance">
-                {"PathMiner's first alpha release will be available in December 2025."}
-              </p>
-              <div className="group/cta flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Button
-                  id="check-out-docs-btn"
-                  size="lg"
-                  className="cursor-pointer bg-accent-emphasis border-2 border-accent-emphasis group-hover/cta:bg-github-canvas/30 group-hover/cta:border-accent-emphasis text-white shadow-xl shadow-accent-emphasis/20 text-lg px-8 py-6 h-auto transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]"
-                >
-                  Check out out docs 
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="cursor-pointer border-github-border border-2 hover:bg-accent-emphasis text-github-fg hover:text-white text-lg px-8 py-6 h-auto backdrop-blur-sm bg-github-canvas/30 transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]"
-                  style={{display: "none"}}
-                
-                >
-                  View documentation
-                </Button>
+            <div className="relative rounded-2xl border border-github-border/50 bg-github-canvas-overlay/50 backdrop-blur-xl p-12 shadow-2xl">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-accent-emphasis/30 bg-accent-emphasis/5 backdrop-blur-sm mb-6">
+                <Sparkles className="w-4 h-4 text-white" />
+                <span className="text-sm text-white font-medium">Join the waitlist</span>
               </div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-github-fg text-balance text-center">
+                Want early access to PathMiner?
+              </h2>
+              <p className="text-xl text-github-fg-muted mb-8 text-balance text-center">
+                {
+                  "Let us know you're interested and we'll keep you updated on our progress."
+                }
+              </p>
+
+              <form onSubmit={handleWaitlistSubmit} className="space-y-4 max-w-2xl mx-auto">
+                <div className="relative w-full">
+                  <label htmlFor="waitlist-email" className="sr-only">
+                    Email address
+                  </label>
+                  <input
+                    id="waitlist-email"
+                    name="email"
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(event) => setEmail(event.target.value)}
+                    placeholder="you@example.com"
+                    className="w-full rounded-xl border border-github-border/60 bg-github-canvas/60 px-4 py-4 pr-40 text-center sm:text-left text-github-fg shadow-inner shadow-black/5 outline-none transition focus:border-accent-emphasis focus:ring-2 focus:ring-accent-emphasis/50"
+                  />
+                  <Button
+                    type="submit"
+                    size="lg"
+                    disabled={!canSubmit}
+                    className={[
+                      "btn-waitlist-submit-cta absolute inset-y-1 right-1 px-5 border-2 text-white h-[calc(100%-0.5rem)] transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] disabled:opacity-60 disabled:cursor-not-allowed",
+                      !canSubmit
+                        ? "bg-gray-500 border-gray-500 shadow-none hover:bg-gray-500 hover:border-gray-500"
+                        : "bg-accent-emphasis border-accent-emphasis shadow-xl shadow-accent-emphasis/20 hover:bg-accent-emphasis/90 hover:border-accent-emphasis",
+                    ].join(" ")}
+                  >
+                    Join waitlist
+                  </Button>
+                </div>
+
+                <div className="space-y-2 text-sm text-github-fg-muted text-center">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-3 justify-center">
+                    <Checkbox
+                      id="consent-checkbox"
+                      checked={consentChecked}
+                      onCheckedChange={(next) => setConsentChecked(Boolean(next))}
+                      className={[
+                        "mt-1 cursor-pointer",
+                        "focus-visible:ring-2 focus-visible:ring-accent-emphasis/50",
+                        // explicit unchecked border; colors are enforced via inline style below
+                        "border border-github-border/60",
+                      ].join(" ")}
+                      style={
+                        consentChecked
+                          ? {
+                              backgroundColor: "#10002e",
+                              borderColor: "#6d00d4",
+                              color: "#ffffff", // checkmark uses currentColor
+                            }
+                          : {
+                              backgroundColor: "#ffffff",
+                              borderColor: "rgba(255,255,255,0.35)",
+                              color: "#6d00d4",
+                            }
+                      }
+                    />
+                    <Label
+                      htmlFor="consent-checkbox"
+                      className="block leading-relaxed cursor-pointer font-normal text-center"
+                    >
+                      I acknowledge that PathMiner may store my data in line with the{" "}
+                      <Link
+                        href="/consent"
+                        className="text-purple-100 underline decoration-1 underline-offset-4 hover:text-accent-emphasis transition-colors cursor-pointer"
+                      >
+                        Data Processing Consent
+                      </Link>
+                      .
+                    </Label>
+                  </div>
+                </div>
+              </form>
             </div>
           </div>
         </div>
@@ -338,6 +406,7 @@ export default function Home() {
           </div>
         </div>
       </footer>
+      </div>
     </div>
   )
 }

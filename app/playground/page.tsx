@@ -15,7 +15,7 @@ import styles from "./playground.module.css"
 export default function PlaygroundPage() {
   return (
     <div className={styles.page}>
-      <ParticleBackground particleColor="#6d00d4" speed="slow" density="medium" />
+      <ParticleBackground particleColor="#888" speed="slow" density="high" />
       <ScrollToTop />
 
       {/* Navigation */}
