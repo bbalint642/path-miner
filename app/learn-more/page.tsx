@@ -131,7 +131,7 @@ export default function LearnMorePage() {
   }, [lightboxIndex])
   return (
     <div className="relative min-h-screen bg-github-canvas text-github-fg overflow-hidden">
-      <ParticleBackground particleColor="#6d00d4" speed="slow" density="medium" />
+      <ParticleBackground particleColor="#888" speed="slow" density="high" />
       <ScrollToTop />
 
       {/* Navigation */}
