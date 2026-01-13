@@ -14,16 +14,54 @@ export default function Home() {
   const [email, setEmail] = useState("")
   const [submitted, setSubmitted] = useState(false)
   const [consentChecked, setConsentChecked] = useState(false)
+  const [submitError, setSubmitError] = useState<string | null>(null)
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const hasEmail = email.trim().length > 0
   const canSubmit = hasEmail && consentChecked
 
-  const handleWaitlistSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const HONEYPOT_FIELD = "company"
+
+  const handleWaitlistSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     if (!email.trim() || !consentChecked) return
 
-    console.log("Waitlist interest (no backend yet):", email)
-    setSubmitted(true)
-    setEmail("")
+    setSubmitError(null)
+
+    const formData = new FormData(event.currentTarget)
+    const honeypot = String(formData.get(HONEYPOT_FIELD) ?? "").trim()
+
+    // If honeypot is filled, silently "succeed" without hitting the backend.
+    if (honeypot.length > 0) {
+      setSubmitted(true)
+      setEmail("")
+      return
+    }
+
+    try {
+      setIsSubmitting(true)
+      const response = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: email.trim(),
+          consent: consentChecked,
+          [HONEYPOT_FIELD]: honeypot,
+        }),
+      })
+
+      if (!response.ok) {
+        const data = (await response.json().catch(() => null)) as { error?: string } | null
+        setSubmitError(data?.error ?? "Something went wrong. Please try again.")
+        return
+      }
+
+      setSubmitted(true)
+      setEmail("")
+    } catch {
+      setSubmitError("Network error. Please try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -226,6 +264,19 @@ export default function Home() {
               </p>
 
               <form onSubmit={handleWaitlistSubmit} className="space-y-4 max-w-2xl mx-auto">
+                {/* Honeypot field (anti-bot). Real users won't see or fill this. */}
+                <div style={{ display: "none" }} aria-hidden="true">
+                  <label htmlFor="waitlist-company">Company</label>
+                  <input
+                    id="waitlist-company"
+                    name={HONEYPOT_FIELD}
+                    type="text"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    defaultValue=""
+                  />
+                </div>
+
                 <div className="relative w-full">
                   <label htmlFor="waitlist-email" className="sr-only">
                     Email address
@@ -243,7 +294,7 @@ export default function Home() {
                   <Button
                     type="submit"
                     size="lg"
-                    disabled={!canSubmit}
+                    disabled={!canSubmit || isSubmitting}
                     className={[
                       "btn-waitlist-submit-cta absolute inset-y-1 right-1 px-5 border-2 text-white h-[calc(100%-0.5rem)] transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] disabled:opacity-60 disabled:cursor-not-allowed",
                       !canSubmit
@@ -251,9 +302,19 @@ export default function Home() {
                         : "bg-accent-emphasis border-accent-emphasis shadow-xl shadow-accent-emphasis/20 hover:bg-accent-emphasis/90 hover:border-accent-emphasis",
                     ].join(" ")}
                   >
-                    Join waitlist
+                    {isSubmitting ? "Joining..." : "Join waitlist"}
                   </Button>
                 </div>
+
+                {submitted ? (
+                  <p className="text-sm text-white/90 text-center">
+                    Thanks — you’re on the list.
+                  </p>
+                ) : null}
+
+                {submitError ? (
+                  <p className="text-sm text-red-200 text-center">{submitError}</p>
+                ) : null}
 
                 <div className="space-y-2 text-sm text-github-fg-muted text-center">
                   <div className="flex flex-col sm:flex-row sm:items-center gap-3 justify-center">
