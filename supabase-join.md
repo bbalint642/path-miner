@@ -6,6 +6,15 @@ NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY=
 # (Ezt soha ne add NEXT_PUBLIC_* néven!)
 SUPABASE_SERVICE_ROLE_KEY=
 
+## Vercel (fontos)
+- A waitlist endpoint (`POST /api/waitlist`) **csak akkor működik**, ha a Vercel-en is be vannak állítva az env változók.
+- Minimum kell:
+  - `NEXT_PUBLIC_SUPABASE_URL` (vagy `SUPABASE_URL`)
+  - `SUPABASE_SERVICE_ROLE_KEY` (**server-only**, ne legyen `NEXT_PUBLIC_*`)
+- A Vercel UI-ban: **Project → Settings → Environment Variables**.
+  - Figyelj rá, hogy a megfelelő környezet(ek)re is felvedd: **Production** / **Preview** / **Development**.
+- Env var hozzáadása/módosítása után **Redeploy** kell (különben a már kint lévő deployment még a régi env-vel fut).
+
 ##page.tsx
 
 import { createClient } from '@/utils/supabase/server'

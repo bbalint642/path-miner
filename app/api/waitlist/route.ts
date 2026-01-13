@@ -126,7 +126,10 @@ export async function POST(request: Request) {
   }
 
   if (!supabaseAdmin) {
-    console.error("Supabase env vars missing: SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY")
+    const missing: string[] = []
+    if (!SUPABASE_URL) missing.push("SUPABASE_URL (or NEXT_PUBLIC_SUPABASE_URL)")
+    if (!SUPABASE_SERVICE_ROLE_KEY) missing.push("SUPABASE_SERVICE_ROLE_KEY")
+    console.error("Waitlist API misconfigured. Missing env:", missing.join(", "))
     return NextResponse.json({ ok: false, error: "Server not configured" }, { status: 500 })
   }
 
